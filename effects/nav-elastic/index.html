@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+  <title>弹性标签动画</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      /* 100%窗口高度 */
+      height: 100vh;
+      /* 弹性布局 水平垂直居中 文字居中 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .wrapper{
+      /* 60%窗口宽度 */
+      width: 60vw;
+      height: 60px;
+      line-height: 60px;
+      background-color: #fff;
+      /* 盒子阴影 */
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.25);
+      border-radius: 50px;
+    }
+    .nav-class{
+      position: relative;
+      display: flex;
+    }
+    .nav-item{
+      flex: 1;
+      cursor: pointer;
+      /* 动画过渡 贝塞尔曲线 */
+      /*transition: 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);*/
+      z-index: 10;
+    }
+    .nav-select{
+    }
+    /* 新增：下方导航的滑动高亮背景（核心） */
+    .nav-highlight{
+      position: absolute;
+      height: 100%;
+      width: 20%;         /* 每个项占20%宽度 */
+      left: 0;            /* 初始位置 */
+      top: 0;
+      background: linear-gradient(to right, #f09819, #ff5858);
+      border-radius: 50px;
+      /* 关键：弹性过渡动画（和原效果一致） */
+      transition: left 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
+      z-index: 1;         /* 低于文字层级 */
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrapper">
+  <div class="nav-class">
+    <div class="nav-item" onclick="changeNav(0)">标题1</div>
+    <div class="nav-item" onclick="changeNav(1)">标题2</div>
+    <div class="nav-item" onclick="changeNav(2)">标题3</div>
+    <div class="nav-item" onclick="changeNav(3)">标题4</div>
+    <div class="nav-item" onclick="changeNav(4)">标题5</div>
+    <div class="nav-highlight" id="navHighlight"></div>
+  </div>
+</div>
+<script>
+  // 获取下方导航的滑动背景
+  const navHighlight = document.getElementById('navHighlight');
+  // 每个项的宽度占比（5个项=20%）
+  const itemWidthPercent = 20;
+
+  function changeNav(index){
+    console.log(index)
+    let navClass = document.getElementsByClassName('nav-class')[0];
+    let navItem = navClass.getElementsByClassName('nav-item');
+
+    // 1. 切换选中类（仅控制文字颜色）
+    for(let i=0;i<navItem.length;i++){
+      navItem[i].className = 'nav-item';
+    }
+    navItem[index].className = 'nav-item nav-select';
+
+    // 2. 核心：控制滑动背景的left值（实现平滑弹性位移）
+    navHighlight.style.left = `${index * itemWidthPercent}%`;
+  }
+</script>
+</body>
+
+</html>

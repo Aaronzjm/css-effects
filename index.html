@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 特效集</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --card: #1a1d27;
+      --border: #2a2e3a;
+      --text: #e6e8ee;
+      --muted: #9aa1b2;
+      --accent: #6c8cff;
+      --accent2: #22e0d6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 20px 60px;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 40px; }
+    header h1 {
+      font-size: 30px; font-weight: 700; letter-spacing: 1px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    header p { color: var(--muted); margin-top: 8px; font-size: 14px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px; }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 18px; text-decoration: none; color: var(--text); display: block;
+      transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+    }
+    .card:hover {
+      transform: translateY(-3px); border-color: var(--accent);
+      box-shadow: 0 8px 24px rgba(108, 140, 255, 0.18);
+    }
+    .card .icon { font-size: 26px; margin-bottom: 10px; }
+    .card h2 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .card p { font-size: 13px; color: var(--muted); }
+    .card .tag {
+      display: inline-block; margin-top: 10px; font-size: 11px; padding: 2px 8px;
+      border-radius: 999px; background: rgba(108,140,255,0.12); color: var(--accent);
+    }
+    footer { text-align: center; margin-top: 44px; color: #6b7280; font-size: 12px; }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>CSS 特效集</h1>
+      <p>个人收藏整理的 10 个 CSS / SVG 前端特效，点击卡片直达查看</p>
+    </header>
+
+    <div class="grid">
+      <a class="card" href="effects/3d-rotate/">
+        <div class="icon">🎠</div>
+        <h2>3D 旋转相册</h2>
+        <p>十面图片环绕成 3D 圆柱，自动旋转的相册效果</p>
+        <span class="tag">CSS 3D Transform</span>
+      </a>
+
+      <a class="card" href="effects/svg-line-animate/">
+        <div class="icon">✏️</div>
+        <h2>SVG 描边动画</h2>
+        <p>SVG 路径逐笔描边绘制，配合 vivus 库</p>
+        <span class="tag">SVG · Vivus</span>
+      </a>
+
+      <a class="card" href="effects/owl-login/">
+        <div class="icon">🦉</div>
+        <h2>猫头鹰登录页</h2>
+        <p>经典猫头鹰登录框，输入密码时猫头鹰捂眼</p>
+        <span class="tag">CSS · jQuery</span>
+      </a>
+
+      <a class="card" href="effects/transform-robot/">
+        <div class="icon">🤖</div>
+        <h2>3D 变形金刚</h2>
+        <p>纯 CSS 3D 搭建的变形金刚，可交互旋转</p>
+        <span class="tag">CSS 3D · Interactive</span>
+      </a>
+
+      <a class="card" href="effects/sidebar-nav/">
+        <div class="icon">📚</div>
+        <h2>侧边导航栏</h2>
+        <p>侧边栏导航展开收起效果</p>
+        <span class="tag">CSS Transition</span>
+      </a>
+
+      <a class="card" href="effects/radio-animate/">
+        <div class="icon">🔘</div>
+        <h2>单选按钮动画</h2>
+        <p>创意单选按钮选中动画</p>
+        <span class="tag">CSS Animation</span>
+      </a>
+
+      <a class="card" href="effects/nav-elastic/">
+        <div class="icon">🧲</div>
+        <h2>导航栏弹性移动</h2>
+        <p>弹性贝塞尔曲线的高亮滑块导航</p>
+        <span class="tag">CSS Cubic-Bezier</span>
+      </a>
+
+      <a class="card" href="effects/expand-btn/">
+        <div class="icon">🔽</div>
+        <h2>点击展开按钮</h2>
+        <p>点击按钮展开内容的效果</p>
+        <span class="tag">CSS · JS</span>
+      </a>
+
+      <a class="card" href="effects/hover-effect/">
+        <div class="icon">🖱️</div>
+        <h2>鼠标悬停效果</h2>
+        <p>鼠标悬停触发的过渡动画</p>
+        <span class="tag">CSS Hover</span>
+      </a>
+
+      <a class="card" href="effects/scroll-load/">
+        <div class="icon">📜</div>
+        <h2>滚动加载动画</h2>
+        <p>滚动到可视区才加载的动画效果</p>
+        <span class="tag">Scroll · IntersectionObserver</span>
+      </a>
+    </div>
+
+    <footer>
+      源码见 <a href="https://github.com/Aaronzjm/css-effects">GitHub 仓库</a>
+    </footer>
+  </div>
+</body>
+</html>
